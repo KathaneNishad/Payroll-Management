@@ -23,6 +23,8 @@
 MANIFEST.MF
 _site/
 activemq-data
+/node_modules
+.angular
 bin
 build
 !/**/src/**/bin
