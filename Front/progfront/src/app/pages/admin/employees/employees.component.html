@@ -25,7 +25,7 @@
                             <th>Designation</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Status</th>
+                           <!-- <th>Status</th>-->
                         </tr>
                         <tr *ngFor="let employee of employees" class="text-center td-bottom">
                             <td *ngIf="employee.authorities[0].authority=='NORMAL'">{{employee.id}}</td>
@@ -35,8 +35,8 @@
                             <td *ngIf="employee.authorities[0].authority=='NORMAL'">{{employee.designation}}</td>
                             <td *ngIf="employee.authorities[0].authority=='NORMAL'">{{employee.email}}</td>
                             <td *ngIf="employee.authorities[0].authority=='NORMAL'">{{employee.phone}}</td>
-                            <td *ngIf="employee.authorities[0].authority=='NORMAL' && employee.enabled==true">Active</td>
-                            <td *ngIf="employee.authorities[0].authority=='NORMAL' && employee.enabled==false">Away</td>
+                            <!-- <td *ngIf="employee.authorities[0].authority=='NORMAL' && employee.enabled==true">Active</td>
+                            <td *ngIf="employee.authorities[0].authority=='NORMAL' && employee.enabled==false">Away</td> -->
 
                             
                         </tr>

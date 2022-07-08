@@ -1,0 +1,73 @@
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-11">
+                    <mat-card class="text-center">                 
+    Leave Manager           
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="row">
+               <!--   {{leaves | json}} -->  
+                    <table class="table-width table-pad table th" >
+                        <tr >
+                            <th>User ID</th>
+                            <th style="width:300px ">Description</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Number Of Leaves</th>
+                            <th>Status Of Leave</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr *ngFor="let leave of leaves" class="text-center td-bottom" style="height: 20px;">
+                            <td>{{leave.user_id}}</td>
+                            <td>{{leave.leaveDescription}}</td>
+                            <td>{{leave.startDate}}</td>
+                            <td>{{leave.endDate}}</td>
+                            <td>{{leave.numberOfLeave}}</td>
+                            <!--<td>{{leave.leaveStatus}}</td>-->
+                            <td>
+                                <mat-form-field appearance="fill">
+                                <mat-select
+                                name="leaveStatus"
+                                [(ngModel)]="leave.leaveStatus"
+                                >
+                                <mat-option 
+                                *ngFor="let status of Statuses" [value]="status.value"
+                                >{{status.value}}</mat-option >
+                            
+                            
+                        </mat-select>
+                    </mat-form-field>
+                            </td>
+                            <td>
+                                <button mat-raised-button color="warn"
+                                (click)="updateLeave(leave)"
+                                >Update</button>
+                            </td>
+                            <!--<td>
+                                <button class="btn btn-primary" (click)="updateLeave(leave)">Update Status</button>
+                            </td>-->
+                            <!--<td>
+                                <button  (click)="$selected">click</button>
+                            </td>-->
+                        </tr>
+                    </table>
+                    
+
+                    
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+<!--<ng-template #selected>
+    <p> Say Hello</p>
+</ng-template>-->

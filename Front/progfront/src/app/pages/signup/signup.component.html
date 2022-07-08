@@ -40,12 +40,17 @@
                     <!--Designation-->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Designation</mat-label>
-                        <input 
-                        required
-                        [(ngModel)]="emp.designation"
+                        <mat-select
                         name="designation"
-                        matInput placeholder="Enter here">
-                    </mat-form-field>
+                        [(ngModel)]="emp.designation"
+                        required
+                        >
+                        <mat-option 
+                        *ngFor="let job of designations" [value]="job.value"
+                        >{{job.value}}</mat-option >
+                        </mat-select>
+                        </mat-form-field>
+
                     <!--Password-->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>

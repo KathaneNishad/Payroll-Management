@@ -1,0 +1,88 @@
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-11">
+                    <mat-card class="text-center">                 
+    Request Leave          
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="text-center mt10">
+                <form (ngSubmit)="formSubmit()">
+                    <!--Uid-->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>User ID</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="login.getUser().id"
+                        name="user_id"
+                        matInput placeholder="login.getUser().id" disabled>
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="col-md-6 offset-md-0" appearance="fill">
+                        <mat-label>Leave Description</mat-label>
+                        <textarea maxlength="100" 
+                        type="text"
+                        required
+                        [(ngModel)]="leave.leaveDescription"
+                        name="leave.leaveDescription"
+                        matInput placeholder="Reason for leave">
+                        </textarea>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Start Date</mat-label>
+                        <input 
+                        type="date"
+                        min="{{minDate}}"
+                        required
+                        [(ngModel)]="leave.startDate"
+                        name="leave.startDate"
+                        matInput placeholder="" >
+                        <mat-hint>start date for leave</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>End Date</mat-label>
+                        <input 
+                        type="date"
+                        min="{{minDate}}"
+                        required
+                        [(ngModel)]="leave.endDate"
+                        name="leave.endDate"
+                        matInput placeholder="" >
+                        <mat-hint>end date for leave</mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Number of Leaves</mat-label>
+                        <input 
+                        type="number"
+                        required
+                        [(ngModel)]="leave.numberOfLeave" (ngModelChange)=dateDifference(leave.endDate,leave.startDate)
+                        name="leave.numberOfLeave"
+                        matInput placeholder="" 
+                        disabled>
+                        <mat-hint>end date for leave</mat-hint>
+                    </mat-form-field>
+
+                    <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Procced</button>
+                    </div>
+                </form>
+                </mat-card>
+            </div>
+            
+        </div>
+    </div>
+</div>

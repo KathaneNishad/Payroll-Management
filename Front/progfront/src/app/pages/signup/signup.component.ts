@@ -9,6 +9,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
+  designations=[{value:"Tester"},
+  {value:"Developer"},
+  {value:"Manager"},
+  {value:"Architect"},
+  {value:"Software Engineer"},
+  {value:"Analyst"}
+];
+
   constructor(
     private userService:UserService,
     private snack:MatSnackBar,

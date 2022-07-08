@@ -47,5 +47,5 @@ export class UserService {
   getUser(id:any){
     return this.http.get(`${baseUrl}user/byId/${id}`);
   }
-
+  
 }

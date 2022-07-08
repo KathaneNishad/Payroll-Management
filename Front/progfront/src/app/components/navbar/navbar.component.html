@@ -4,7 +4,9 @@
       <mat-toolbar color="warn">
         <!--Home-->
         <div class="col">
-          <a routerLink="" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <a 
+          *ngIf="!login.isLoggedIn()"
+          routerLink="" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
             <mat-icon>home</mat-icon>
           </a>
         </div>

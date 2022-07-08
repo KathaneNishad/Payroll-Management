@@ -1,0 +1,42 @@
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-11">
+                    <mat-card class="text-center">                 
+    Leave Chart        
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="row">
+                    
+                    <table class="table-width table-pad table th" >
+                        <tr >
+                            
+                            <th>Leave Category</th>
+                            <th>Number of Leaves</th>
+                            
+                        </tr>
+                        <tr *ngFor="let categories of leavesCategories" class="text-center td-bottom" style="height: 20px;">
+                            <td>{{categories.leaveCategories}}</td>
+                            <td>{{categories.noOfLeaves}}</td>
+                            
+                            
+                        </tr>
+                        <tr class="text-center td-bottom">
+                            <td>Total Leaves</td>
+                            <td >{{getTotal()}}</td>
+                        </tr>
+                    </table>
+
+                    
+            </div>
+        </div>
+    </div>
+</mat-card>

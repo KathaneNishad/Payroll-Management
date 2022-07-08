@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+//import { NgTemplateOutlet } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSelectModule } from '@angular/material/select'; 
+import { FormControl } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +31,18 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { EmployeesComponent } from './pages/admin/employees/employees.component';
 import { WelcomeEmpComponent } from './pages/employee/welcome-emp/welcome-emp.component';
 import { SidebarEmpComponent } from './pages/employee/sidebar-emp/sidebar-emp.component';
-import { EditProfileComponent } from './pages/edit-profile/edit-profile.component'; 
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { LeaveComponent } from './pages/employee/leave/leave.component';
+import { RequestleaveComponent } from './pages/employee/requestleave/requestleave.component';
+import { LeavestatusComponent } from './pages/employee/leavestatus/leavestatus.component'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CheckLeavesComponent } from './pages/admin/check-leaves/check-leaves.component';
+import { LeaveChartComponent } from './pages/employee/leave-chart/leave-chart.component';
+import { LeaveChartAdminComponent } from './pages/admin/leave-chart-admin/leave-chart-admin.component';
+import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.component';
+//import { EditleaveComponent } from './pages/admin/editleave/editleave.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,9 +60,17 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
     EmployeesComponent,
     WelcomeEmpComponent,
     SidebarEmpComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    LeaveComponent,
+    RequestleaveComponent,
+    LeavestatusComponent,
+    CheckLeavesComponent,
+    LeaveChartComponent,
+    LeaveChartAdminComponent,
+    LeaveAdminComponent,
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -62,6 +84,10 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
     MatIconModule,
     MatCardModule,
     MatListModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    
+    //NgTemplateOutlet,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
