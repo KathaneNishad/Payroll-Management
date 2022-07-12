@@ -51,7 +51,7 @@ public class LeaveController {
 	//Update Leave Status
 	@PutMapping("/update-leave-status")
 	public Leave updateLeave(@RequestBody Leave leave) {
-		return this.leaveService.updateLeaveStatus(leave.getLid(), leave);
+		return leaveService.updateLeaveStatus(leave.getLid(), leave);
 	}
 	
 	///Leave Master
