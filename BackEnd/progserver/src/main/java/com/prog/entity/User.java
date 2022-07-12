@@ -1,5 +1,8 @@
 package com.prog.entity;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,8 +17,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.logging.log4j.message.Message;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "user")
 public class User implements UserDetails{
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -246,12 +252,11 @@ public class User implements UserDetails{
 		this.userRoles.forEach(userRole -> {
 			set.add(new Authority(userRole.getRole().getRoleName()));
 		});
-		System.out.println(set.toString());
+		System.out.println("Role name"+set.toString());
+		System.out.println(set);
 		return set;
 	}
-
-
-
+	
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
