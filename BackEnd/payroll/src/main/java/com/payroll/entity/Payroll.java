@@ -11,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.jpa.repository.Query;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import javax.persistence.ManyToOne;
 //import javax.persistence.OneToMany;
 //import javax.persistence.OneToOne;
@@ -35,6 +36,7 @@ public class Payroll {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="payrollmaster_id")
+	@JsonIgnore
 	private PayrollMaster payrollMaster;
 	
 	

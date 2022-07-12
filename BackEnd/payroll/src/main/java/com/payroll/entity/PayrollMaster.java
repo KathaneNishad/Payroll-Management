@@ -105,6 +105,17 @@ public class PayrollMaster {
 	public void setPayrolls(List<Payroll> payroll) {
 		this.payroll = payroll;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "PayrollMaster [pid=" + pid + ", designation=" + designation + ", basic=" + basic + ", deducePerLeave="
+				+ deducePerLeave + ", payroll=" + payroll + "]";
+	}
+	
+	
 	
 	
 	

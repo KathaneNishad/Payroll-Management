@@ -41,7 +41,16 @@ public class MasterServiceImpl implements MasterService{
 		PayrollMaster record=this.masterRepository.findById(id).get();
 		record.setBasic(payroll.getBasic());
 		
-		return this.masterRepository.save(record);
+		record.setDeducePerLeave(payroll.getDeducePerLeave());
+		record = this.masterRepository.save(record);
+		
+		this.masterRepository.updatePayrollBasicFromPayMaster();
+		this.masterRepository.updatePayrollDeductionFromPayMaster();
+		
+		//System.out.println("New Record is here "+record.toString());
+		//update for 
+		
+		return record;
 		
 		
 		

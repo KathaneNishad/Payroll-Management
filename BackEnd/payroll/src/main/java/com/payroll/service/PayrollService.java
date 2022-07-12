@@ -6,7 +6,7 @@ import com.payroll.entity.Payroll;
 
 public interface PayrollService {
 	//generate payroll
-		public Payroll createPayroll(Payroll payroll);
+		public Payroll createPayroll(Payroll payroll) throws Exception;
 		//view all Payroll records
 		public List<Payroll> getAllPayrollRecords();
 		//get payroll for particular user_id

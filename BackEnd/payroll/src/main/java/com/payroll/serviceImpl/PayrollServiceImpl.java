@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.payroll.entity.Payroll;
 import com.payroll.entity.PayrollMaster;
+import com.payroll.helper.PayrollFoundException;
 import com.payroll.repo.PayrollMasterRepo;
 import com.payroll.repo.PayrollRepository;
 import com.payroll.service.PayrollService;
@@ -20,10 +22,38 @@ public class PayrollServiceImpl implements PayrollService {
 	@Autowired 
 	PayrollMasterRepo masterRepo;
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@Override
-	public Payroll createPayroll(Payroll payroll) {
-		System.out.println("Payroll created");
-		return this.repo.save(payroll);
+	public Payroll createPayroll(Payroll payroll) throws Exception{
+		//System.out.println("Payroll created");
+		
+		Payroll pay = this.repo.findByUserId(payroll.getUser_id());
+		if(pay!=null) {
+			System.out.println("Payroll for this User ID: "+payroll.getUser_id()+" already exists");
+			throw new PayrollFoundException();
+		}
+		else {
+			//generate payroll
+			pay = payroll;
+			//System.out.println("Here --> "+payroll.getDesignation());
+			//System.out.println("Here --> "+pay.getDesignation());
+			pay.setDeduction(masterRepo.getDeductionByDesignation(payroll.getDesignation()));
+			pay.setBasic(masterRepo.getBasicByDesignation(payroll.getDesignation()));
+			
+			//get leaves from leave module
+			int leaves_taken =
+					  this.restTemplate.getForObject("http://localhost:8081/leave/leave-count/"+
+							  payroll.getUser_id(),int.class);
+			pay.setLeavesTaken(leaves_taken);
+			
+			System.out.println(masterRepo.getPayrollIdFromMaster(payroll.getDesignation()));
+			pay = this.repo.save(payroll);
+			repo.setDesgignationInPayroll(payroll.getUser_id(),masterRepo.getPayrollIdFromMaster(payroll.getDesignation()));
+		}
+		
+		return pay;
 	}
 
 	@Override
@@ -34,8 +64,9 @@ public class PayrollServiceImpl implements PayrollService {
 
 	@Override
 	public Payroll getPayrollByUserId(Long user_id) {
-		System.out.println("User id"+user_id);
-		Payroll payroll = this.repo.findById(user_id).get();
+		System.out.println("User id "+user_id);
+		//Payroll payroll = this.repo.findById(user_id).get();
+		Payroll payroll = this.repo.findByUserId(user_id);
 		
 		return payroll;
 	}

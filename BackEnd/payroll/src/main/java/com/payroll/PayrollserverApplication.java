@@ -4,16 +4,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import com.payroll.entity.Payroll;
 import com.payroll.entity.PayrollMaster;
+import com.payroll.repo.PayrollMasterRepo;
+import com.payroll.repo.PayrollRepository;
 import com.payroll.service.MasterService;
+import com.payroll.service.PayrollService;
 
 
 
 @SpringBootApplication
 public class PayrollserverApplication implements CommandLineRunner{
 	
+//	@Autowired private PayrollMasterRepo payrollMasterRepo;
+	
+	//@Autowired private PayrollRepository payrollRepository;
+	
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+	
+	
+	  //@Autowired private PayrollService payrollServicel;
+	 
 	/*
 	 * @Autowired private MasterService masterService;
 	 * 
@@ -37,13 +54,28 @@ public class PayrollserverApplication implements CommandLineRunner{
 		 * PayrollMaster master1 = this.masterService.createPayroll(master);
 		 */
 		
+		
+		
 		/*
 		 * Payroll pay= new Payroll();
 		 * 
-		 * pay.setDesignation("Architect"); pay.setLeavesTaken(5); pay.setUser_id(39L);
-		 * pay.setPayrollMaster(payrollMaster.ge);
+		 * pay.setDesignation("Tester"); pay.setUser_id(29L);
+		 * pay.setBasic(payrollMasterRepo.getBasicByDesignation("Tester"));
+		 * 
+		 * payrollServicel.createPayroll(pay);
 		 */
+		 
+		  
+		  
+		/*
+		 * String b = payrollMasterRepo.getBasicByDesignation("Developer");
+		 * 
+		 * System.out.println("Here="+b);
+		 */
+		//this.payrollRepository.setDesgignationInPayroll(85L,1L);
 		
+		
+		//System.out.println((payrollMasterRepo.getPayrollIdFromMaster("Tester")).getClass());
 		
 		
 	}
