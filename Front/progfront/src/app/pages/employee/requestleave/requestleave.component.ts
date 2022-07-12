@@ -31,8 +31,23 @@ minDate:any="";
     "leaveStatus":'Pending',
   }
 
+  leaveCount:any=0;
+
+  total:number=0;
+
+  public leavesCategories = [
+
+  ] as any;
+  public category={};
+
   ngOnInit(): void {
     this.getDate();
+    this.leaveService.getLeaveCount(this.login.getUser().id).subscribe(data=>this.leaveCount=data);
+
+    //get leave chart 
+    this.leaveService.displayLeaveChart().subscribe(data=>this.leavesCategories=data);
+
+    
   }
 
   dateDifference(date2:any, date1:any) {
@@ -58,6 +73,21 @@ minDate:any="";
     this.minDate=year+"-"+month+"-"+day;
 
   }
+
+  //get total leaves
+  getTotal() {
+    let total = 0;
+    for (var i = 0; i < this.leavesCategories.length; i++) {
+        if (this.leavesCategories[i].noOfLeaves) {
+            total += this.leavesCategories[i].noOfLeaves;
+         //   this.leavesCategories = total;
+        }
+    }
+    return total;
+}
+
+  
+
 
   formSubmit(){
     //console.log(this.leave.startDate);

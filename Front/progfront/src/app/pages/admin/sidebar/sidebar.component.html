@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card >
     <mat-action-list>
         <div mat-subheader>Menu</div>
         <button mat-list-item
@@ -26,9 +26,17 @@
             Leave Manager
         </button>
 
-        <button mat-list-item>
+        <button mat-list-item
+        routerLink="/admin/pay-master"
+        >
             <mat-icon mat-list-icon>receipt_long</mat-icon>
             Payroll
+        </button>
+    <button mat-list-item
+        (click)="logout()"
+        >
+            <mat-icon mat-list-icon>logout</mat-icon>
+            Log out
         </button>
     </mat-action-list>
 </mat-card>

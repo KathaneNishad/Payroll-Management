@@ -11,10 +11,8 @@ export class SignupComponent implements OnInit {
 
   designations=[{value:"Tester"},
   {value:"Developer"},
-  {value:"Manager"},
   {value:"Architect"},
   {value:"Software Engineer"},
-  {value:"Analyst"}
 ];
 
   constructor(

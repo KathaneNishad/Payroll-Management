@@ -6,11 +6,14 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { EmployeesComponent } from './pages/admin/employees/employees.component';
 import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.component';
 import { LeaveChartAdminComponent } from './pages/admin/leave-chart-admin/leave-chart-admin.component';
+import { PaymasterComponent } from './pages/admin/paymaster/paymaster.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { EmppayrollComponent } from './pages/employee/emppayroll/emppayroll.component';
 import { LeaveChartComponent } from './pages/employee/leave-chart/leave-chart.component';
 import { LeaveComponent } from './pages/employee/leave/leave.component';
 import { LeavestatusComponent } from './pages/employee/leavestatus/leavestatus.component';
+import { PayslipComponent } from './pages/employee/payslip/payslip.component';
 import { RequestleaveComponent } from './pages/employee/requestleave/requestleave.component';
 import { UserDashboardComponent } from './pages/employee/user-dashboard/user-dashboard.component';
 import { WelcomeEmpComponent } from './pages/employee/welcome-emp/welcome-emp.component';
@@ -50,8 +53,11 @@ const routes: Routes = [
       },
       {
         path:'leave-chart-admin',component:LeaveChartAdminComponent,
-      }
-
+      },
+      {
+        path:'pay-master',component:PaymasterComponent,
+      },
+      
     ]
   },
   {path:'user',component:UserDashboardComponent,canActivate:[EmployeeGuard],
@@ -76,7 +82,14 @@ const routes: Routes = [
     },
     {
       path:'leave-chart',component:LeaveChartComponent,
+    },
+    {
+      path:'payroll',component:EmppayrollComponent,
+    },
+    {
+      path:'payslip',component:PayslipComponent,
     }
+
   ]
 },
 ];

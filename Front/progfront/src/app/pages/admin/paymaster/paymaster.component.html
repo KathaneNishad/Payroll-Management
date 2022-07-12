@@ -1,59 +1,57 @@
-<mat-card class="bg-light">
+<mat-card class="bg-light" >
     <div class="bootstrap-wrapper">
         <div class="container" >
             <div class="row ">
                 <div class="col-md-11">
                     <mat-card class="text-center">                 
-    Leave Chart        
+    Payroll Manager           
                     </mat-card>
                 </div>
             </div>
         </div>
     </div>
 </mat-card>
+<!--{{payrolls|json}}-->
 <mat-card class="bg-light">
     <div class="bootstrap-wrapper">
         <div class="container">
             <div class="row">
-                    
+               <!--   {{leaves | json}} -->  
                     <table class="table-width table-pad table th" >
                         <tr >
-                            
-                            <th>Leave Category</th>
-                            <th>Number of Leaves</th>
-                            <th>Update Number</th>
+                            <th>ID</th>
+                            <th>Designation</th>
+                            <th>Basic Salary</th>
+                            <th>Deduction Per Leave</th>
                             <th>Action</th>
-                            
                         </tr>
-                        <tr *ngFor="let categories of leavesCategories" class="text-center td-bottom" style="height: 20px;">
-                            <td>{{categories.leaveCategories}}</td>
-                            <td>{{categories.noOfLeaves}}</td>
+                        <tr *ngFor="let payroll of payrolls" class="text-center td-bottom" style="height: 20px;">
+                            <td>{{payroll.pid}}</td>
+                            <td>{{payroll.designation}}</td>
                             <td>
                                 <mat-form-field appearance="fill">
                                     <mat-label></mat-label>
                                     <input matInput 
-                                    [(ngModel)]="categories.noOfLeaves"
-                                    placeholder="{{categories.noOfLeaves}}" >
+                                    [(ngModel)]="payroll.basic"
+                                    placeholder="{{payroll.basic}}" >
+                    </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field appearance="fill">
+                                    <mat-label></mat-label>
+                                    <input matInput 
+                                    [(ngModel)]="payroll.deducePerLeave"
+                                    placeholder="{{payroll.deducePerLeave}}" >
                     </mat-form-field>
                             </td>
                             <td>
                                 <button mat-raised-button color="warn"
-                                (click)="editCategories(categories)"
+                                (click)="updatePayrolls(payroll)"
                                 >Update</button>
-                            </td>
-                            
-                            
-                        </tr>
-                        <tr class="text-center td-bottom">
-                            <td>Total Leaves</td>
-                            <td >{{getTotal()}}</td>
-                            <td>
-                                <button mat-raised-button color="warn"
-                                (click)="refresh()"
-                                >Save Changes</button>
                             </td>
                         </tr>
                     </table>
+                    
 
                     
             </div>

@@ -14,11 +14,25 @@
 <div class="bootstrap-wrapper">
     <div class="container">
         <div class="row">
-            
+           
             <div class="col-md-6 offset-md-3">
                 <mat-card class="text-center mt10">
+                <table class="table-width table-pad table th">
+                    <tr class="text-center td-bottom" >
+                        <td>User ID</td>
+                        <td>{{login.getUser().id}}</td>
+                    </tr>
+                    <tr class="text-center td-bottom" >
+                        <td>Accepted Leaves</td>
+                        <td>{{leaveCount}}</td>
+                    </tr>
+                    <tr class="text-center td-bottom" >
+                        <td>Remaining Leave</td>
+                        <td>{{getTotal() - leaveCount}}</td>
+                    </tr>
+                </table>
                 <form (ngSubmit)="formSubmit()">
-                    <!--Uid-->
+                   <!-- Uid
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>User ID</mat-label>
                         <input 
@@ -28,6 +42,17 @@
                         matInput placeholder="login.getUser().id" disabled>
                         <mat-hint></mat-hint>
                     </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Accepted Leaves</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="leaveCount"
+                        name="leaveCount"
+                        matInput placeholder="leaveCount" disabled>
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+                    -->
                     <br>
                     <mat-form-field class="col-md-6 offset-md-0" appearance="fill">
                         <mat-label>Leave Description</mat-label>
@@ -49,19 +74,18 @@
                         [(ngModel)]="leave.startDate"
                         name="leave.startDate"
                         matInput placeholder="" >
-                        <mat-hint>start date for leave</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>End Date</mat-label>
                         <input 
                         type="date"
-                        min="{{minDate}}"
+                        [disabled]="!leave.startDate"
+                        min="{{leave.startDate}}"
                         required
                         [(ngModel)]="leave.endDate"
                         name="leave.endDate"
                         matInput placeholder="" >
-                        <mat-hint>end date for leave</mat-hint>
                     </mat-form-field>
                     <br>
                     <mat-form-field class="full-width" appearance="outline">
@@ -73,7 +97,6 @@
                         name="leave.numberOfLeave"
                         matInput placeholder="" 
                         disabled>
-                        <mat-hint>end date for leave</mat-hint>
                     </mat-form-field>
 
                     <div class="container text-center">

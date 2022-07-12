@@ -40,9 +40,12 @@ import { CheckLeavesComponent } from './pages/admin/check-leaves/check-leaves.co
 import { LeaveChartComponent } from './pages/employee/leave-chart/leave-chart.component';
 import { LeaveChartAdminComponent } from './pages/admin/leave-chart-admin/leave-chart-admin.component';
 import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.component';
+import { PaymasterComponent } from './pages/admin/paymaster/paymaster.component';
+import { EmppayrollComponent } from './pages/employee/emppayroll/emppayroll.component';
 //import { EditleaveComponent } from './pages/admin/editleave/editleave.component';
-
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { PayslipComponent } from './pages/employee/payslip/payslip.component'; 
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.compo
     LeaveChartComponent,
     LeaveChartAdminComponent,
     LeaveAdminComponent,
+    PaymasterComponent,
+    EmppayrollComponent,
+    PayslipComponent,
   ],
   imports: [
     
@@ -86,6 +92,8 @@ import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.compo
     MatListModule,
     MatDatepickerModule,
     MatSelectModule,
+    MatGridListModule,
+    NgxPrintModule
     
     //NgTemplateOutlet,
   ],

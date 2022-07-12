@@ -27,6 +27,7 @@ export class LeaveserviceService {
 
   //all leave by a user fetched using user_id
   public getAllLeaveByUserId(id:any){
+    //console.log(this.http.get(`${leaveUrl}leave/view-leave/${id}`));
     return this.http.get(`${leaveUrl}leave/view-leave/${id}`);
   }
 
@@ -48,5 +49,11 @@ export class LeaveserviceService {
   //Edit Leave Categories
   public editCategories(leaveCat:any){
     return this.http.put(`${leaveUrl}leave/edit-categories`,leaveCat);
+  }
+
+  //CountOfLeavesTakenByAUser
+  public getLeaveCount(id:any){
+    //console.log(this.http.get(`${leaveUrl}leave/leave-count/29`));
+    return this.http.get(`${leaveUrl}leave/leave-count/${id}`);
   }
 }

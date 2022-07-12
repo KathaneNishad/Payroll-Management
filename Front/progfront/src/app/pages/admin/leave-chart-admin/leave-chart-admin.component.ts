@@ -14,6 +14,7 @@ export class LeaveChartAdminComponent implements OnInit {
   public leavesCategories = [
 
   ] as any;
+
   public category={};
 
   constructor(
@@ -40,8 +41,13 @@ export class LeaveChartAdminComponent implements OnInit {
 
 editCategories(category:any){
     console.log(category);
-    window.location.reload();
+    //window.location.reload();
     this.leaveService.editCategories(category).subscribe();
+    //window.location.reload();
   }     
+
+  refresh(){
+    window.location.reload();
+  }
 
 }

@@ -11,7 +11,7 @@
           </a>
         </div>
         <div class="col">
-          <span class="span-center">Payroll Manager</span>
+          <span class="span-center">Payroll Management System</span>
         </div>
 
         <div class="col" style="text-align:end ;">
@@ -31,18 +31,11 @@
           </a>
           <!--Log Out-->
           
-          <a 
-          (click) ='logout()'
-          *ngIf="login.isLoggedIn()"
-          [routerLink]="'/signup'" mat-icon-button class="example-icon mr10 ml10"
-            aria-label="Example icon-button with share icon ">
-            Log Out
-          </a>
           <a
           *ngIf="login.isLoggedIn()"
-          mat-icon-button class="example-icon mr30 ml10"
+          mat-icon-button class="example-icon mr100 ml10"
             aria-label="Example icon-button with share icon ">
-            {{user.userName}}
+            <mat-icon mat-list-icon>account_circle</mat-icon>  {{user.userName}}
           </a>
         </div>
       </mat-toolbar>

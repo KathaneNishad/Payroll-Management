@@ -1,0 +1,36 @@
+<mat-card class="bg-light">
+    <div class="bootstrap-wrapper">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-11">
+                    <mat-card class="text-center">                 
+    Payroll Manager          
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
+<!--{{login.getUser()|json}}-->
+
+<mat-card>
+      <mat-card-title>Generate Payroll</mat-card-title>      
+    
+    <mat-card-actions>
+      <button mat-button
+        (click)="generatePayroll()"
+      >Click Here</button>
+    </mat-card-actions>
+</mat-card>
+<br>
+<mat-card >
+    <mat-card-title>View Payslip</mat-card-title>      
+  
+  <mat-card-actions>
+    <button mat-button
+      routerLink="/user/payslip"
+    >Click Here</button>
+  </mat-card-actions>
+</mat-card>
+
+  
