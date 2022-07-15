@@ -73,24 +73,14 @@ public class UserController {
 			return this.userService.getUser(userName);
 		}
 		
-		@DeleteMapping("/{id}")
-		public void deleteUser(@PathVariable("id") Long id) {
-			
-			this.userService.deleteUser(id);
-		}
-		
-		@PutMapping("/edit")
-		public User updateUser(@RequestBody User user) {
-			return this.userService.updateUser(user.getId(),user);
-		}
 		
 		@GetMapping("/all")
 		public List<User> getAllUsers(){
 			return this.userService.getAllUsers();
 		}
+		@GetMapping("/usernameById/{id}")
+		public String getUsernameById(@PathVariable("id") Long id) {
+			return userService.fetchUserNameById(id);
+		}
 		
-		/*
-		 * @ExceptionHandler(UserFoundException.class) public ResponseEntity<?>
-		 * exceptionHandler(UserFoundException ex){ return ResponseEntity<?>excep; }
-		 */
 }

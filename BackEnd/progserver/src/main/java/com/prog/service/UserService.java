@@ -12,14 +12,12 @@ public interface UserService {
 	public User createUser(User user,Set<UserRole> userRoles) throws Exception;
 	//Get User 
 	public User getUser(String userName);
-	//Delete by userName
-	public void deleteUser(Long id);
-	//Update User
-	public User updateUser(Long id,User user);
 	//all users
 	public List<User> getAllUsers();
 	//get User By id
 	public Optional<User> fetchEmployeeById(Long id);
+	//get username by id
+	public String fetchUserNameById(Long id);
 
 }
 

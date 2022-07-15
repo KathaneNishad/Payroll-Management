@@ -1,9 +1,6 @@
 package com.prog.entity;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
-import java.time.LocalDate;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,14 +38,11 @@ public class User implements UserDetails{
 	private String userName;
 	private String phone;
 	private String password;
-	private String profileUrl;
 	
 	
 	private String designation;
-	@DateTimeFormat(iso = ISO.DATE)
-	private LocalDate doj;
+
 	
-	private boolean enabled = true;
 	
 	
 	//User has many roles
@@ -64,7 +58,7 @@ public class User implements UserDetails{
 
 
 	public User(Long id, String firstName, String lastName, String email, String userName, String phone,
-			String password, String profileUrl, String designation, LocalDate doj, boolean enabled,
+			String password, String designation,
 			Set<UserRole> userRoles) {
 		this.id = id;
 		this.firstName = firstName;
@@ -73,17 +67,15 @@ public class User implements UserDetails{
 		this.userName = userName;
 		this.phone = phone;
 		this.password = password;
-		this.profileUrl = profileUrl;
 		this.designation = designation;
-		this.doj = doj;
-		this.enabled = enabled;
+
 		this.userRoles = userRoles;
 	}
 	
 	
 
 	public User(Long id, String firstName, String lastName, String email, String userName, String phone,
-			String password, String designation, LocalDate doj) {
+			String password, String designation) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -93,7 +85,6 @@ public class User implements UserDetails{
 		this.phone = phone;
 		this.password = password;
 		this.designation = designation;
-		this.doj = doj;
 	}
 
 
@@ -181,14 +172,6 @@ public class User implements UserDetails{
 	}
 
 
-	public String getProfileUrl() {
-		return profileUrl;
-	}
-
-
-	public void setProfileUrl(String profileUrl) {
-		this.profileUrl = profileUrl;
-	}
 
 
 	public String getDesignation() {
@@ -200,25 +183,6 @@ public class User implements UserDetails{
 		this.designation = designation;
 	}
 
-
-	public LocalDate getDoj() {
-		return doj;
-	}
-
-
-	public void setDoj(LocalDate doj) {
-		this.doj = doj;
-	}
-
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 
 
 	public Set<UserRole> getUserRoles() {
@@ -237,8 +201,7 @@ public class User implements UserDetails{
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", userName=" + userName + ", phone=" + phone + ", password=" + password + ", profileUrl="
-				+ profileUrl + ", designation=" + designation + ", doj=" + doj + ", enabled=" + enabled + ", userRoles="
+				+ ", userName=" + userName + ", phone=" + phone + ", password=" + password + ", designation=" + designation + ", userRoles="
 				+ userRoles + "]";
 	}
 
@@ -283,6 +246,14 @@ public class User implements UserDetails{
 
 	@Override
 	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+
+	@Override
+	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}

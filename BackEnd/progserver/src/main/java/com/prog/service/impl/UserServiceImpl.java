@@ -56,26 +56,17 @@ public class UserServiceImpl implements UserService{
 		return this.userRepository.findById(id);
 	}
 
-
-	@Override
-	public void deleteUser(Long id) {
-		// TODO Auto-generated method stub
-		this.userRepository.deleteById(id);
-	}
-
-
-	@Override
-	public User updateUser(Long id, User user) {
-		User editUser = this.userRepository.findById(id).get();
-		editUser.setFirstName(user.getFirstName());
-		//editUser.setPassword(user.getPassword());
-		//editUser.setPhone(user.getPhone());
-		
-		return this.userRepository.save(editUser);
-	}
 	@Override
 	public List<User> getAllUsers(){
 		return this.userRepository.findAll();
+	}
+
+
+	@Override
+	public String fetchUserNameById(Long id) {
+		User user = userRepository.findById(id).get();
+		String userName = user.getUserName();
+		return userName;
 	}
 
 	
