@@ -44,7 +44,7 @@ public class PayrollServiceImpl implements PayrollService {
 			
 			//get leaves from leave module
 			int leaves_taken =
-					  this.restTemplate.getForObject("http://localhost:8081/leave/leave-count/"+
+					  this.restTemplate.getForObject("http://localhost:8081/leave/leave-count-thismonth/"+
 							  payroll.getUser_id(),int.class);
 			pay.setLeavesTaken(leaves_taken);
 			
@@ -55,6 +55,20 @@ public class PayrollServiceImpl implements PayrollService {
 		
 		return pay;
 	}
+	
+	@Override
+	public Payroll updatePayroll(Long pid) {
+		Payroll pay = this.repo.findById(pid).get();
+		int leaves_taken =
+				  this.restTemplate.getForObject("http://localhost:8081/leave/leave-count-thismonth/"+
+						  pay.getUser_id(),int.class);
+		pay.setLeavesTaken(leaves_taken);
+		pay = this.repo.save(pay);
+		
+		return pay;
+	}
+	
+	
 
 	@Override
 	public List<Payroll> getAllPayrollRecords() {
@@ -80,15 +94,6 @@ public class PayrollServiceImpl implements PayrollService {
 		return basic;
 	}
 
-//	@Override
-//	public PayrollLeaveMapper fetchNoofLeaves(Long user_id) {
-//		
-//		PayrollLeaveMapper plm=new PayrollLeaveMapper();
-//		Payroll payroll=repo.findById(user_id).get();
-//		Leave leave =restTemplate.getForObject("http://localhost:8081/leave/view-leave/"+payroll.getUser_id(), Leave.class);
-//		
-//		return null;
-//	}
 
 	
 
