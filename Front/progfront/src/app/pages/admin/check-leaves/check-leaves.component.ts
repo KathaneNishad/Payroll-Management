@@ -14,27 +14,33 @@ export class CheckLeavesComponent implements OnInit {
 
   ] as any;
 
-  public leave={};
-  public Statuses = [{value:"Accepted"},
+  public name:any={};
+
+  public Statuses = [
+    {value:"Pending"},
+    {value:"Approved"},
   {value:"Rejected"},
-  {value:"Pending"},
 ];
+
+
   
 
 
   constructor(
-    private userService:UserService,
+    public userService:UserService,
     private snack:MatSnackBar,
     private leaveService:LeaveserviceService,
     public login:LoginService,
   ) { }
 
   ngOnInit(): void {
-    this.leaveService.getAllLeave().subscribe(data=>this.leaves=data);
+        this.leaveService.getAllLeave().subscribe(data=>this.leaves=data);
+
   }
   
   updateLeave(leave:any){
     console.log(leave);
     this.leaveService.editLeaves(leave).subscribe();
   }
+
 }

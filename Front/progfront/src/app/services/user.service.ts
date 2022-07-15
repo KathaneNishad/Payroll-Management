@@ -36,16 +36,14 @@ export class UserService {
   public getAllEmployees():Observable<User[]>{
     return this.http.get<User[]>(`${baseUrl}user/all`);
   }
-  //edit Employee
-  editEmployee(emp:User){
-    console.log("emp ::",emp);
-    //console.log(this.httpOptions.headers);
-    return this.http.put(`${baseUrl}user/edit/`,emp,this.httpOptions);
-
-  }
   //getEmployee
   getUser(id:any){
     return this.http.get(`${baseUrl}user/byId/${id}`);
+  }
+
+  //getUserName
+  getUserName(id:any){
+    return this.http.get(`${baseUrl}user/usernameById/${id}`,this.httpOptions);
   }
   
 }

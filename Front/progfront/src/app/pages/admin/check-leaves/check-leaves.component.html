@@ -15,10 +15,9 @@
     <div class="bootstrap-wrapper">
         <div class="container">
             <div class="row">
-               <!--   {{leaves | json}} -->  
                     <table class="table-width table-pad table th" >
                         <tr >
-                            <th>User ID</th>
+                            <th>User Name</th>
                             <th style="width:300px ">Description</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -27,7 +26,7 @@
                             <th>Action</th>
                         </tr>
                         <tr *ngFor="let leave of leaves" class="text-center td-bottom" style="height: 20px;">
-                            <td>{{leave.user_id}}</td>
+                            <td>{{(leave.userName)}}</td>
                             <td>{{leave.leaveDescription}}</td>
                             <td>{{leave.startDate}}</td>
                             <td>{{leave.endDate}}</td>

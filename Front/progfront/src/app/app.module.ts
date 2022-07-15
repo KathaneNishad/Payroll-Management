@@ -31,7 +31,6 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { EmployeesComponent } from './pages/admin/employees/employees.component';
 import { WelcomeEmpComponent } from './pages/employee/welcome-emp/welcome-emp.component';
 import { SidebarEmpComponent } from './pages/employee/sidebar-emp/sidebar-emp.component';
-import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { LeaveComponent } from './pages/employee/leave/leave.component';
 import { RequestleaveComponent } from './pages/employee/requestleave/requestleave.component';
 import { LeavestatusComponent } from './pages/employee/leavestatus/leavestatus.component'; 
@@ -63,7 +62,6 @@ import { NgxPrintModule } from 'ngx-print';
     EmployeesComponent,
     WelcomeEmpComponent,
     SidebarEmpComponent,
-    EditProfileComponent,
     LeaveComponent,
     RequestleaveComponent,
     LeavestatusComponent,

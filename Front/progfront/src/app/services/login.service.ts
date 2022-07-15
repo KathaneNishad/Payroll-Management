@@ -23,7 +23,7 @@ export class LoginService {
     return this.http.get(`${baseUrl}current-user`);
   }
 
-  //login user
+  //login user-->set token in localStorage
   public loginUser(token:any){
     localStorage.setItem('token',token);
     

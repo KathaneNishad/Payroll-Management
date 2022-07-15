@@ -66,6 +66,7 @@
                         <input 
                         required
                         [(ngModel)]="emp.email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         name="email"
                         type="email" matInput placeholder="Enter here">
                     </mat-form-field>

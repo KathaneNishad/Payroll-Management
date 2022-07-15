@@ -15,6 +15,7 @@ export class EmppayrollComponent implements OnInit {
   pay={"user_id":"",
         "designation":"",
 };
+paydata:any={};
 
   constructor(private userService:UserService,
     private snack:MatSnackBar,
@@ -23,6 +24,8 @@ export class EmppayrollComponent implements OnInit {
     private payroll:PayrollService) { }
 
   ngOnInit(): void {
+    this.generatePayroll();
+    this.payroll.getPayrollByUserId(this.login.getUser().id).subscribe(data=>this.paydata=data);
   }
 
   generatePayroll(){
@@ -32,18 +35,26 @@ export class EmppayrollComponent implements OnInit {
     this.payroll.generatePayroll(this.pay).subscribe((data: any)=>{
       //success
       console.log("success");
-      this.snack.open("Employee PaySlip Generate ",'',{
+      this.snack.open("Employee Pay Slip Generate ",'',{
         duration:3000,
         
       })
     },
     (error:any)=>{
       //error
-      this.snack.open("Payslip Exists !! Proceed to View Payslip",'',{
-        duration:2000,
+      this.snack.open("Get Updated Payslip by clicking on 'Update Payslip'",'',{
+        duration:4000,
         
       })
     });
   }
 
+  payrollUpdate(){
+    console.log(this.paydata);
+    this.payroll.updatePayroll(this.paydata.pay_id).subscribe();
+    this.snack.open("Payslip Updated! Proceed to View Payslip",'',{
+      duration:3000,
+    });
+  }
+  
 }

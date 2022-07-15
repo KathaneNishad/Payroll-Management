@@ -8,7 +8,6 @@ import { LeaveAdminComponent } from './pages/admin/leave-admin/leave-admin.compo
 import { LeaveChartAdminComponent } from './pages/admin/leave-chart-admin/leave-chart-admin.component';
 import { PaymasterComponent } from './pages/admin/paymaster/paymaster.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
-import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { EmppayrollComponent } from './pages/employee/emppayroll/emppayroll.component';
 import { LeaveChartComponent } from './pages/employee/leave-chart/leave-chart.component';
 import { LeaveComponent } from './pages/employee/leave/leave.component';
@@ -37,9 +36,6 @@ const routes: Routes = [
         path:'profile',component:ProfileComponent,
       },
       {
-        path:'edit',component:EditProfileComponent,
-      },
-      {
         path:'employees',component:EmployeesComponent,
       },
       {
@@ -64,9 +60,6 @@ const routes: Routes = [
   children:[
     {
       path:'',component:WelcomeEmpComponent,
-    },
-    {
-      path:'edit',component:EditProfileComponent,
     },
     {
       path:'profile',component:ProfileComponent,

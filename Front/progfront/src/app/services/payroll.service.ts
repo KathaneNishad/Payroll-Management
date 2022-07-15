@@ -40,4 +40,8 @@ export class PayrollService {
     return this.http.get(`${payrollUrl}Payroll/viewById/${userId}`);
   }
 
+  public updatePayroll(id:any){
+    return this.http.get(`${payrollUrl}Payroll/update/${id}`);
+  }
+
 }

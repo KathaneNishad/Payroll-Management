@@ -7,6 +7,4 @@ export interface User{
         "password":'',
         "email":'',
         "phone":'',
-        "enabled":'',
-
 }

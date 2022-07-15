@@ -33,6 +33,16 @@ export class PayslipComponent implements OnInit {
   deducePerLeave:number=0;
   totalDeduction:number=0;
 
+  today = new Date();
+  date = this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate();
+  time = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+  dateTime = this.date;
+  nowtime = this.time;
+  monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  month=this.monthNames[this.today.getMonth()-1];
+  
+  
+
   constructor(private userService:UserService,
     private snack:MatSnackBar,
     private leaveService:LeaveserviceService,
@@ -43,27 +53,32 @@ export class PayslipComponent implements OnInit {
   this.payroll.getPayrollByUserId(this.login.getUser().id).subscribe(data=>this.payslip=data);
   }
   
+  numberWithCommas(x:number) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+
   //Salary
   getBasic(basic:number){
-    return this.basicSalary=basic;
+    return this.numberWithCommas(this.basicSalary=basic);
   }
   getDA(){
-    return this.da=((this.basicSalary)*5)/100;
+    return this.numberWithCommas(this.da=((this.basicSalary)*5)/100);
   }
   getHRA(){
-    return this.hra=((this.basicSalary)*10)/100;
+    return this.numberWithCommas(this.hra=((this.basicSalary)*10)/100);
   }
   getTravel(){
-    return this.travel=((this.basicSalary)*4)/100;
+    return this.numberWithCommas(this.travel=((this.basicSalary)*4)/100);
   }
   getMedical(){
-    return this.medical=((this.basicSalary)*12)/100;
+    return this.numberWithCommas(this.medical=((this.basicSalary)*12)/100);
   }
   getGross(){
-    return this.gross=Number(this.basicSalary)+Number(this.da)+Number(this.hra)+Number(this.travel)+Number(this.medical);
+    return this.numberWithCommas(this.gross=Number(this.basicSalary)+Number(this.da)+Number(this.hra)+Number(this.travel)+Number(this.medical));
   }
   getNet(){
-    return this.net=Number(this.gross) - Number(this.totalDeduction);
+    return this.numberWithCommas(this.net=Number(this.gross) - Number(this.totalDeduction));
   }
 
   //Leave
@@ -71,10 +86,10 @@ export class PayslipComponent implements OnInit {
     return this.numberOfLeave=leaves;
   }
   getDeducePerLeave(deduce:number){
-    return this.deducePerLeave=deduce;
+    return this.numberWithCommas(this.deducePerLeave=deduce);
   }
   getDeduction(){
-    return this.totalDeduction=this.deducePerLeave * this.numberOfLeave;
+    return this.numberWithCommas(this.totalDeduction=this.deducePerLeave * this.numberOfLeave);
   }
   
 }

@@ -21,12 +21,17 @@
     <tr>
         <td colspan="2"><hr></td>
     </tr>
+    <tr>
+        <td style="font-weight: 500; font-size:small;" colspan="2" align="center" >Period: Month of {{month}}</td>
+    </tr>
     <br>
     <tr>
         <td>Name :        {{login.getUser().firstName}} {{login.getUser().lastName}}</td>
+        <td>Date: {{dateTime}}</td>
     </tr>
     <tr>
         <td>Designation : {{payslip.designation}}</td>
+        <td>Time: {{nowtime}}</td>
     </tr>
     <br>
     <tr>
@@ -79,7 +84,7 @@
                     <td colspan="2"><hr></td>
                 </tr>
                 <tr>
-                    <td style="color: red;">Number of leaves </td>
+                    <td >Number of leaves </td>
                     <td>{{getLeaves(payslip.leavesTaken)}}</td>
                 </tr>
                 <tr>

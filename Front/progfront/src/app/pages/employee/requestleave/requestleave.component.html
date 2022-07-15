@@ -23,7 +23,7 @@
                         <td>{{login.getUser().id}}</td>
                     </tr>
                     <tr class="text-center td-bottom" >
-                        <td>Accepted Leaves</td>
+                        <td>Approved Leaves</td>
                         <td>{{leaveCount}}</td>
                     </tr>
                     <tr class="text-center td-bottom" >
@@ -70,6 +70,7 @@
                         <input 
                         type="date"
                         min="{{minDate}}"
+                        max="{{lastDayOfMonth}}"
                         required
                         [(ngModel)]="leave.startDate"
                         name="leave.startDate"
@@ -82,6 +83,7 @@
                         type="date"
                         [disabled]="!leave.startDate"
                         min="{{leave.startDate}}"
+                        max="{{lastDayOfMonth}}"
                         required
                         [(ngModel)]="leave.endDate"
                         name="leave.endDate"
