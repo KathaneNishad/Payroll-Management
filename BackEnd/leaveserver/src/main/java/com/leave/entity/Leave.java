@@ -24,7 +24,7 @@ public class Leave {
 	
 	@Column
 	private Long user_id;
-	
+	private String userName;
 	private String leaveDescription;
 	
 	@DateTimeFormat(iso = ISO.DATE)
@@ -41,7 +41,7 @@ public class Leave {
 		super();
 	}
 
-	public Leave(Long lid, Long user_id, String leaveDescription, LocalDate startDate, LocalDate endDate,
+	public Leave(Long lid, Long user_id, String userName,String leaveDescription, LocalDate startDate, LocalDate endDate,
 			int numberOfLeave, String leaveStatus) {
 		super();
 		this.lid = lid;
@@ -67,6 +67,16 @@ public class Leave {
 
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
+	}
+	
+	
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getLeaveDescription() {
@@ -99,13 +109,7 @@ public class Leave {
 		
 	}
 
-	public void setNumberOfLeave(int numberOfLeave) {
-		/*
-		 * LocalDateTime date1 = getStartDate().atStartOfDay(); LocalDateTime date2 =
-		 * getEndDate().atStartOfDay(); long daysBetween = Duration.between(date1,
-		 * date2).toDays(); numberOfLeave= (int)daysBetween-1; //System.out.println
-		 * ("Days: " + daysBetween);
-		 */		
+	public void setNumberOfLeave(int numberOfLeave) {	
 		this.numberOfLeave = numberOfLeave;
 	}
 

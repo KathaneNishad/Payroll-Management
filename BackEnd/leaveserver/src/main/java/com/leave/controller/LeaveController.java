@@ -79,4 +79,10 @@ public class LeaveController {
 		return this.leaveService.countOfLeavesByUser(user_id);
 	}
 	
+	//Get leaveCount for a user for current month
+	@GetMapping("/leave-count-thismonth/{user_id}")
+	public int leaveCountThisMonth(@PathVariable("user_id") Long user_id) {
+		return this.leaveService.countLeaveForCurrentMonth(user_id);
+	}
+	
 }

@@ -15,5 +15,7 @@ public interface LeaveService {
 	public Leave updateLeaveStatus(Long lid,Leave leave);
 	//Leave Count
 	public int countOfLeavesByUser(Long user_id);
+	//Leave for a user for current month
+	public int countLeaveForCurrentMonth(Long user_id);
 
 }

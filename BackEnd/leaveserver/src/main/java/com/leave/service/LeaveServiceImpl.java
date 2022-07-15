@@ -68,7 +68,7 @@ public class LeaveServiceImpl implements LeaveService{
 	//List<Leave> userLeaves =new  ArrayList<>();
 		int leaveCount=0;
 		for(Leave l:leaveList) {
-			if((l.getUser_id())==user_id && (l.getLeaveStatus()).equals("Accepted")) {
+			if((l.getUser_id())==user_id && (l.getLeaveStatus()).equals("Approved")) {
 				leaveCount += l.getNumberOfLeave();
 			//	System.out.println("Here-->"+l.getLeaveStatus());
 				
@@ -76,6 +76,24 @@ public class LeaveServiceImpl implements LeaveService{
 		}
 		return leaveCount;
 	}
+	
+	//Count leaves for user by id for current month
+	@Override
+	public int countLeaveForCurrentMonth(Long user_id) {
+		List<Leave> leaveList = this.leaveRepository.countOfLeavesForCurrentMotnh(user_id);
+		//List<Leave> userLeaves =new  ArrayList<>();
+			int leaves=0;
+			for(Leave l:leaveList) {
+				if((l.getLeaveStatus()).equals("Approved")) {
+					leaves += l.getNumberOfLeave();
+					
+				}
+			}
+		return leaves;
+	}
+	
+	
+	
 	
 	
 }
